@@ -15,6 +15,7 @@ Aplicativo desenvolvido como teste técnico para a empresa remOpt.
 
 ## Como funciona
 
+- **Execução**: Ao clonar o repositório, digite "yarn" no terminal para baixar as bibliotecas. Para rodar o aplicativo execute o comando "yarn android" no terminal.
 - **Tela Inicial**: Mostra o logo, nome do usuário e botão para escanear QR Code.
 - **Scanner**: Usa a câmera do dispositivo para ler QR Codes.
 - **Consulta**: Ao ler o QR, busca o Pokémon correspondente, além do anterior e próximo, salvando tudo no estado global.
