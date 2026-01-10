@@ -2,38 +2,35 @@ import React, { useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './src/theme/theme';
+import { PokemonProvider } from './src/context/PokemonContext';
 import Home from './src/screens/Home';
-import Profile from './src/screens/Profile';
-import Settings from './src/screens/Settings';
+import Scanner from './src/screens/Scanner';
+import PokemonResult from './src/screens/PokemonResult';
 import * as S from './src/styles/app.styles';
 
 export default function App() {
-  const [screen, setScreen] = useState<'home' | 'profile' | 'settings'>('home');
+  const [tela, setTela] = useState<'home' | 'scanner' | 'result'>('home');
 
-  const renderScreen = () => {
-    if (screen === 'home') return <Home />;
-    if (screen === 'profile') return <Profile />;
-    return <Settings />;
+  const onPokemonFound = () => {
+    setTela('result');
+  };
+
+  const renderTela = () => {
+    if (tela === 'scanner') {
+      return <Scanner onBack={() => setTela('home')} onPokemonFound={onPokemonFound} />;
+    }
+    if (tela === 'result') {
+      return <PokemonResult onBack={() => setTela('home')} />;
+    }
+    return <Home onScan={() => setTela('scanner')} />;
   };
 
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <S.Container>
-          <S.Header>
-            <S.TabButton onPress={() => setScreen('home')}>
-              <S.TabButtonText active={screen === 'home'}>Home</S.TabButtonText>
-            </S.TabButton>
-            <S.TabButton onPress={() => setScreen('profile')}>
-              <S.TabButtonText active={screen === 'profile'}>Profile</S.TabButtonText>
-            </S.TabButton>
-            <S.TabButton onPress={() => setScreen('settings')}>
-              <S.TabButtonText active={screen === 'settings'}>Settings</S.TabButtonText>
-            </S.TabButton>
-          </S.Header>
-
-          {renderScreen()}
-        </S.Container>
+        <PokemonProvider>
+          <S.Container>{renderTela()}</S.Container>
+        </PokemonProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );
