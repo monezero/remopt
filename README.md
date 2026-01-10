@@ -21,7 +21,7 @@ Aplicativo desenvolvido como teste técnico para a empresa remOpt.
 - **Resultado**: Exibe nome, tipo e imagem do Pokémon, com animação. 
 - **Layout**: Todo o visual é feito com styled-components.
 
----
+
 
 ## Showcase
 
@@ -30,3 +30,5 @@ Aplicativo desenvolvido como teste técnico para a empresa remOpt.
   <img src="https://github.com/user-attachments/assets/790b8cd8-2f6d-41d4-ba87-801ab2388fab" alt="Tela Scanner" width="28%" />
   <img src="https://github.com/user-attachments/assets/2240afc9-6496-4685-9058-3ecd1399ab93" alt="Tela Resultado" width="28%" />
 </p>
+
+---
